@@ -7,12 +7,20 @@ def print_results(log_entries: dict, full: bool, text: str, total_logs_count: in
             print(entry_log)
         else:
             if text:
+                text_before = (
+                    entry_log[entry_log.find(text) - 150: entry_log.find(text)] if len(entry_log[: entry_log.find(text)]) > 150 else entry_log[: entry_log.find(text)]
+                )
+                text_after = (
+                    entry_log[entry_log.find(text) + len(text): entry_log.find(text) + len(text) + 150] if len(entry_log[entry_log.find(text) + len(text):]) > 150 else entry_log[entry_log.find(text) + len(text):]
+                )
                 print(
                     '[{0}]'.format(Fore.YELLOW + str(entry_date) + Fore.RESET),
                     '{0}{1}{2}'.format(
-                        entry_log[entry_log.find(text) - 150: entry_log.find(text)],
+                        text_before,
+                        # entry_log[entry_log.find(text) - 15: entry_log.find(text)],
                         Fore.GREEN + entry_log[entry_log.find(text): entry_log.find(text) + len(text)] + Fore.RESET,
-                        entry_log[entry_log.find(text) + len(text): entry_log.find(text) + len(text) + 150]
+                        text_after
+                        # entry_log[entry_log.find(text) + len(text): entry_log.find(text) + len(text) + 150]
                     )
                 )
             else:
