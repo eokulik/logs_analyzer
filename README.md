@@ -25,8 +25,9 @@ optional arguments:
   -n UNWANTED, --unwanted UNWANTED:
                         A text to filter out logs. (case-insensitive) Logs with this text will
                         be excluded from the results. Can be a string or a
-                        list divided by commas (e.g. "out of memory, info")
-  --full FULL:           Return full log entry instead of default symbols Qty
+                        list divided by commas (e.g. "out of memory, info")   
+  -q SYMBOLS_QTY, --symbols_qty SYMBOLS_QTY: How much symbols should be returned. Default is 300  
+  --full                Return full log entry instead of default symbols Qty  
 
 ### Usage example:  
 ```commandline
