@@ -2,9 +2,9 @@ from datetime import datetime
 
 
 def parse(logs: list) -> dict:
-    date = None
-    entries = {}
     for log in logs:
+        date = None
+        entries = {}
         for line in log:
             possible_date = line[:23]
             try:
@@ -14,7 +14,7 @@ def parse(logs: list) -> dict:
                 if date:
                     entries[date] += line
                 continue
-    return entries
+        yield entries
 
 
 def find_entries(log_entries: dict, text: str, unwanted: str, date: str) -> dict:

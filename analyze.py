@@ -21,5 +21,10 @@ options = parser.parse_args()
 if __name__ == '__main__':
     logs = get_files(options.file)
     log_entries = parse(logs)
-    filtered_logs = find_entries(log_entries, options.text, options.unwanted, options.date)
-    print_results(filtered_logs, options.full, options.text, len(log_entries), int(options.symbols_qty))
+    filtered_logs = dict()
+    len_log_entries = 0
+    for log_entry in log_entries:
+        filtered_log = find_entries(log_entry, options.text, options.unwanted, options.date)
+        filtered_logs.update(filtered_log)
+        len_log_entries += len(log_entry)
+    print_results(filtered_logs, options.full, options.text, len_log_entries, int(options.symbols_qty))
